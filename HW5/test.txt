@@ -1,0 +1,4 @@
+Problem- 1
+To count number of lines, words and characters in a text file
+Problem- 2
+To copy an image from one file to another
