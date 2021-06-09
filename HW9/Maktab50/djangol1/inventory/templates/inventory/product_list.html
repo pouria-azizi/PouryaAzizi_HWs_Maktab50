@@ -1,0 +1,55 @@
+{% extends 'blog/base.html' %}
+{% block page_header_title %}
+    {{ page_title }}
+{% endblock %}
+{% block content %}
+
+    <div class="limiter">
+        <div class="container-login100" style="background-color: #0f6674">
+            <div class="row mb-2">
+                {% for post in object_list %}
+                    <div class="col-md-4">
+                        <div class="card mb-4 shadow-sm">
+                            {% if post.intro_image2 %}
+                                <a href="{% url 'blog:detail' post.pk %}">
+                                    <img class="card-img-top" src="{{ post.intro_image2.url }}">
+                                </a>
+                            {% endif %}
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <small class="text" style="color: black">{{ post.name }}</small>
+                                    <small class="text" style="color: #0056b3">قیمت: {{ post.price }}</small>
+                                    <div class="btn-group">
+                                        <button type="button"
+                                                class="btn btn-sm btn-outline-secondary text-primary like-btn"
+                                                data-post-id="{{ post.id }}">Buy 🎁
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <small class="text-muted mt-3">توضیحات: {{ post.description }}</small>
+                                    <small class="text-muted mt-3">موجود: {{ post.is_active }}</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+{#                <div>#}
+{#                    {% block previous_page_url %}#}
+{#                        {% url 'in' page_obj.previous_page_number %}#}
+{#                    {% endblock previous_page_url %}#}
+{#                    {% block next_page_url %}#}
+{#                        {% url 'blog:home' page_obj.next_page_number %}#}
+{#                    {% endblock next_page_url %}#}
+{#                </div>#}
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{#                {% for product in object_list %}#}
+{#                    <div class="col-3" style="color: white">#}
+{#                        {{ product }}#}
+{#                    </div>#}
+{#                {% endfor %}#}
